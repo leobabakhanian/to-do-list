@@ -64,6 +64,7 @@ const Navbar = () => {
               className={classes.logout}
               color="secondary"
               onClick={logout}
+              style={{ background: "#b23b3b" }}
             >
               Logout
             </Button>

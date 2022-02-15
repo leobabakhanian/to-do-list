@@ -11,6 +11,7 @@ export default makeStyles({
   },
   card: {
     overflowWrap: "break-word",
+    position: "relative",
   },
   iconDelete: {
     background: "#d63241",
@@ -22,6 +23,22 @@ export default makeStyles({
     },
   },
   iconEdit: {
+    background: "#f79100",
+    color: "#fff",
+    borderRadius: 3,
+    padding: 8,
+    "&:hover": {
+      backgroundColor: "#c67400",
+    },
+  },
+  buttons: {
+    display: "inline",
+    right: 0,
+    position: "absolute",
+    marginTop: -5,
+    paddingRight: 5,
+  },
+  iconCheck: {
     background: "#28a244",
     color: "#fff",
     borderRadius: 3,

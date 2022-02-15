@@ -4,13 +4,11 @@ import {
   Card,
   CardContent,
   CardActions,
-  Grid,
-  Paper,
-  Button,
   Typography,
   IconButton,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import CheckIcon from "@mui/icons-material/Check";
 import EditIcon from "@mui/icons-material/Edit";
 import { useDispatch } from "react-redux";
 import { deleteTask } from "../../../actions/tasks";
@@ -43,17 +41,28 @@ const Task = ({ task, setCurrentId }) => {
     </IconButton>
   );
 
+  const CheckButton = () => (
+    <IconButton
+      variant="contained"
+      color="primary"
+      style={{ backgroundColor: "transparent" }}
+      disableRipple
+    >
+      <CheckIcon className={classes.iconCheck} />
+    </IconButton>
+  );
   return (
     <Card className={classes.card} variant="outlined">
       <CardContent>
         <Typography className={classes.message} variant="body2" component="p">
           {task.message}
+          <div className={classes.buttons}>
+            <CheckButton />
+            <EditButton />
+            <DeleteButton />
+          </div>
         </Typography>
       </CardContent>
-      <CardActions className={classes.cardActions}>
-        <EditButton />
-        <DeleteButton />
-      </CardActions>
     </Card>
   );
 };

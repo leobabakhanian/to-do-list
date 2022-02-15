@@ -36,7 +36,6 @@ export default makeStyles((theme) => ({
     alignItems: "center",
   },
   logout: {
-    background: "#b23b3b",
     borderRadius: 3,
   },
   avatar: {
