@@ -17,7 +17,7 @@ export default (tasks = [], action) => {
       );
 
     case "DELETE":
-      return tasks.filter((post) => post._id !== action.payload);
+      return tasks.filter((task) => task._id !== action.payload);
 
     default:
       return tasks;
