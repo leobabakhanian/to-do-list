@@ -35,3 +35,13 @@ export const deleteTask = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const doneTask = (id) => async (dispatch) => {
+  const user = JSON.parse(localStorage.getItem("profile"));
+  try {
+    const { data } = await api.doneTask(id, user?.token);
+    dispatch({ type: "DONE", payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -22,4 +22,7 @@ export default makeStyles((theme) => ({
     width: "50%",
     margin: "auto",
   },
+  taskInput: {
+    background: "#fff",
+  },
 }));

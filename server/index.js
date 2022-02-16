@@ -16,10 +16,11 @@ app.use("/tasks", taskRoutes);
 app.use("/users", userRoutes);
 
 const PORT = process.env.PORT || 5000;
-const CONNECTION_URL = "";
+const CONNECTION_URL =
+  "mongodb+srv://message-board:mbadmin1234@cluster0.sgjl6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 app.get("/", (req, res) => {
-  res.send("TODO LIST API");
+  res.send("TO-DO LIST API");
 });
 
 mongoose

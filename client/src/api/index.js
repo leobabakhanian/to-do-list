@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://to-do-list--api.herokuapp.com/",
+  baseURL: "http://localhost:5000",
 });
 
 API.interceptors.request.use((req) => {
@@ -16,6 +16,7 @@ API.interceptors.request.use((req) => {
 
 export const fetchTasks = () => API.get("/tasks");
 export const createTask = (newTask) => API.post("/tasks", newTask);
+export const doneTask = (id) => API.patch(`/tasks/${id}/doneTask`);
 export const updateTask = (id, updatedTask) =>
   API.patch(`/tasks/${id}`, updatedTask);
 export const deleteTask = (id) => API.delete(`/tasks/${id}`);

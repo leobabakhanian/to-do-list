@@ -56,4 +56,29 @@ export const deleteTask = async (req, res) => {
   res.json({ message: "Task deleted successfully." });
 };
 
+export const doneTask = async (req, res) => {
+  const { id } = req.params;
+
+  if (!req.userId) {
+    return res.json({ message: "Not authenticated" });
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No task with id: ${id}`);
+
+  const task = await Task.findById(id);
+
+  const index = task.done.findIndex((id) => id === String(req.userId));
+
+  if (index === -1) {
+    task.done.push(req.userId);
+  } else {
+    task.done = task.done.filter((id) => id !== String(req.userId));
+  }
+  const updatedTask = await Task.findByIdAndUpdate(id, task, {
+    new: true,
+  });
+  res.status(200).json(updatedTask);
+};
+
 export default router;

@@ -2,16 +2,14 @@ import React from "react";
 import Task from "./Task/Task";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
-import { Grid, CircularProgress } from "@mui/material";
+import { Grid } from "@mui/material";
 
 const Tasks = ({ setCurrentId }) => {
   const tasks = useSelector((state) => state.tasks);
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem("profile"));
 
-  return !tasks.length ? (
-    <CircularProgress />
-  ) : (
+  return (
     <Grid
       className={classes.container}
       container
