@@ -10,6 +10,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import CheckIcon from "@mui/icons-material/Check";
 import EditIcon from "@mui/icons-material/Edit";
+import ClearIcon from "@mui/icons-material/Clear";
 import { useDispatch } from "react-redux";
 import { deleteTask, doneTask } from "../../../actions/tasks";
 
@@ -54,6 +55,18 @@ const Task = ({ task, setCurrentId }) => {
     </IconButton>
   );
 
+  const ClearButton = () => (
+    <IconButton
+      variant="contained"
+      color="primary"
+      style={{ backgroundColor: "transparent" }}
+      disableRipple
+      onClick={() => dispatch(doneTask(task._id))}
+    >
+      <ClearIcon className={classes.iconCheck} />
+    </IconButton>
+  );
+
   const Message = () => {
     if (task.done && task.done.length > 0) {
       return task.done.find((dn) => dn === user?.result?._id) ? (
@@ -68,13 +81,33 @@ const Task = ({ task, setCurrentId }) => {
     return <>{task.message}</>;
   };
 
+  const Done = () => {
+    if (task.done && task.done.length > 0) {
+      return task.done.find((dn) => dn === user?.result?._id) ? (
+        <>
+          <ClearButton />
+        </>
+      ) : (
+        <>
+          <CheckButton />
+        </>
+      );
+    }
+
+    return (
+      <>
+        <CheckButton />
+      </>
+    );
+  };
+
   return (
     <Card className={classes.card} variant="outlined">
       <CardContent>
         <Typography className={classes.message} variant="body2" component="p">
           <Message />
           <div className={classes.buttons}>
-            <CheckButton />
+            <Done />
             <EditButton />
             <DeleteButton />
           </div>
